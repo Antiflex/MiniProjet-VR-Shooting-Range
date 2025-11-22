@@ -5,15 +5,23 @@ using UnityEngine;
 public class TargetBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject particule;
+    public GameObject particulePC;
+    public GameObject particuleMQ;
+    private GameObject particule;
+
     void Start()
     {
+#if UNITY_ANDROID
+            particule = particuleMQ;
+#else
+        particule = particulePC;
+
+#endif
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
     private void OnTriggerEnter(Collider other)
     {

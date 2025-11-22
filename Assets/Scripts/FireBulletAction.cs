@@ -12,11 +12,21 @@ public class FireBulletAction : MonoBehaviour
     public Transform spawnPoint;
     [SerializeField]
     public float fireSpeed = 20;
-    public GameObject particule;
+    public GameObject particulePC;
+    public GameObject particuleMQ;
+    private GameObject particule;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+    #if UNITY_ANDROID
+            particule = particuleMQ;
+    #else
+            particule = particulePC;
+
+    #endif
         UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabbable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
         grabbable.activated.AddListener(FireBullet);
     }

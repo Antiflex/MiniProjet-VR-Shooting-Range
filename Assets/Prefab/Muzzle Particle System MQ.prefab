@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 133660842581694313}
   - component: {fileID: 3122847658771664619}
   m_Layer: 0
-  m_Name: Particle System muzzle
+  m_Name: Muzzle Particle System MQ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,7 +980,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 100
+        scalar: 30
         minScalar: 30
         maxCurve:
           serializedVersion: 2
