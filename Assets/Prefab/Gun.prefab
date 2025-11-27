@@ -457,7 +457,8 @@ MonoBehaviour:
   bullet: {fileID: 1601872068996233835, guid: d0b1839b9b73e094c91381f897a76d06, type: 3}
   spawnPoint: {fileID: 7425484511920533111}
   fireSpeed: 20
-  particule: {fileID: 7827823921846311797, guid: 18be33ef9e8444f4f9ae59f8d791949f, type: 3}
+  particulePC: {fileID: 7827823921846311797, guid: 18be33ef9e8444f4f9ae59f8d791949f, type: 3}
+  particuleMQ: {fileID: 7827823921846311797, guid: 53450452d1a491c4c973488aa62746e2, type: 3}
 --- !u!1 &5759792316557102092
 GameObject:
   m_ObjectHideFlags: 0

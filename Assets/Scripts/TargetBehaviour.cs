@@ -4,8 +4,25 @@ using UnityEngine;
 
 public class TargetBehaviour : MonoBehaviour
 {
-    public GameObject particule;
+    // Start is called before the first frame update
+    public GameObject particulePC;
+    public GameObject particuleMQ;
+    private GameObject particule;
 
+    void Start()
+    {
+#if UNITY_ANDROID
+            particule = particuleMQ;
+#else
+        particule = particulePC;
+
+#endif
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bullet"))
@@ -15,10 +32,10 @@ public class TargetBehaviour : MonoBehaviour
             explosion.transform.position = transform.position;
             Destroy(explosion, 0.75f);
 
-            // --- Désactivation de la cible (pool)
+            // --- Dï¿½sactivation de la cible (pool)
             gameObject.SetActive(false);
 
-            // --- Désactivation de la balle (pool)
+            // --- Dï¿½sactivation de la balle (pool)
             other.gameObject.SetActive(false);
         }
     }

@@ -4,13 +4,28 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class FireBulletAction : MonoBehaviour
 {
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private float fireSpeed = 20;
-    [SerializeField] private GameObject particule;
+    [SerializeField]
+    public GameObject bullet;
+    [SerializeField]
+    public Transform spawnPoint;
+    [SerializeField]
+    public float fireSpeed = 20;
+    public GameObject particulePC;
+    public GameObject particuleMQ;
+    private GameObject particule;
+
+
 
     private void Start()
     {
-        var grabbable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        
+    #if UNITY_ANDROID
+            particule = particuleMQ;
+    #else
+            particule = particulePC;
+
+    #endif
+        UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabbable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
         grabbable.activated.AddListener(FireBullet);
     }
 
@@ -23,7 +38,7 @@ public class FireBulletAction : MonoBehaviour
         Rigidbody rb = spawnedBullet.GetComponent<Rigidbody>();
         rb.linearVelocity = spawnPoint.forward * fireSpeed;
 
-        // Retour automatique dans la pool après 5 sec
+        // Retour automatique dans la pool aprï¿½s 5 sec
         StartCoroutine(ReturnAfterDelay(spawnedBullet, 5f));
 
         // --- Explosion en Instantiate / Destroy (pas de pool) ---
