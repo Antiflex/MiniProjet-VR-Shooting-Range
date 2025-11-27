@@ -1,40 +1,40 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using static UnityEngine.ParticleSystem;
 
 public class FireBulletAction : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject bullet;
-    [SerializeField]
-    public Transform spawnPoint;
-    [SerializeField]
-    public float fireSpeed = 20;
-    public GameObject particule;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float fireSpeed = 20;
+    [SerializeField] private GameObject particule;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabbable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        var grabbable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
         grabbable.activated.AddListener(FireBullet);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void FireBullet(ActivateEventArgs arg)
     {
-        GameObject spawnedBullet = Instantiate(bullet);
+        // --- Utilisation de la pool ---
+        GameObject spawnedBullet = BulletPool.Instance.GetBullet();
         spawnedBullet.transform.position = spawnPoint.position;
-        spawnedBullet.GetComponent<Rigidbody>().linearVelocity = spawnPoint.forward * fireSpeed;
-        Destroy(spawnedBullet, 5);
+
+        Rigidbody rb = spawnedBullet.GetComponent<Rigidbody>();
+        rb.linearVelocity = spawnPoint.forward * fireSpeed;
+
+        // Retour automatique dans la pool après 5 sec
+        StartCoroutine(ReturnAfterDelay(spawnedBullet, 5f));
+
+        // --- Explosion en Instantiate / Destroy (pas de pool) ---
         GameObject explosion = Instantiate(particule);
-        explosion.transform.position = spawnPoint.transform.position;
+        explosion.transform.position = spawnPoint.position;
         Destroy(explosion, 0.5f);
+    }
+
+    private IEnumerator ReturnAfterDelay(GameObject bullet, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        BulletPool.Instance.ReturnBullet(bullet);
     }
 }
