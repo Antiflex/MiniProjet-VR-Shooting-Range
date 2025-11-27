@@ -25,13 +25,18 @@ public class TargetBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.gameObject.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet"))
         {
-            GameObject explosion= Instantiate(particule);
+            // --- Explosion (PAS dans la pool)
+            GameObject explosion = Instantiate(particule);
             explosion.transform.position = transform.position;
-            Destroy(explosion,0.75f);
-            Destroy(gameObject);
-            Destroy(other.gameObject);            
+            Destroy(explosion, 0.75f);
+
+            // --- D�sactivation de la cible (pool)
+            gameObject.SetActive(false);
+
+            // --- D�sactivation de la balle (pool)
+            other.gameObject.SetActive(false);
         }
     }
 }
