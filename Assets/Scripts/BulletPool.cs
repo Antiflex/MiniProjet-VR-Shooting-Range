@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
     public static BulletPool Instance;
 
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;   // Prefab classique dans le projet (non-Addressable)
     [SerializeField] private int poolSize = 20;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
@@ -29,16 +29,21 @@ public class BulletPool : MonoBehaviour
     public GameObject GetBullet()
     {
         if (pool.Count == 0)
-            PopulatePool(); // s�curit� : on agrandit
+        {
+            // Sécurité : si toutes les balles sont utilisées, on en recrée une
+            GameObject extra = Instantiate(bulletPrefab);
+            extra.SetActive(false);
+            pool.Enqueue(extra);
+        }
 
-        GameObject obj = pool.Dequeue();
-        obj.SetActive(true);
-        return obj;
+        GameObject bullet = pool.Dequeue();
+        bullet.SetActive(true);
+        return bullet;
     }
 
-    public void ReturnBullet(GameObject obj)
+    public void ReturnBullet(GameObject bullet)
     {
-        obj.SetActive(false);
-        pool.Enqueue(obj);
+        bullet.SetActive(false);
+        pool.Enqueue(bullet);
     }
 }

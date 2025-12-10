@@ -5,14 +5,19 @@ public class TargetPool : MonoBehaviour
 {
     public static TargetPool Instance;
 
-    [SerializeField] private GameObject targetPrefab;
-    [SerializeField] private int initialPoolSize = 10;
-
+    private GameObject targetPrefab; // fourni par FXAddressables
     private List<GameObject> pool = new List<GameObject>();
 
-    void Awake()
+    [SerializeField] private int initialPoolSize = 10;
+
+    private void Awake()
     {
         Instance = this;
+    }
+
+    public void InitializeAddressablePrefab(GameObject prefab)
+    {
+        targetPrefab = prefab;
 
         for (int i = 0; i < initialPoolSize; i++)
             CreateNewTarget();
@@ -34,7 +39,6 @@ public class TargetPool : MonoBehaviour
                 return t;
         }
 
-        // pool épuisé → on peut créer si tu veux que ça scale
         return CreateNewTarget();
     }
 }
