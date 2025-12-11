@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: FX_Quest
+  m_EditorClassIdentifier: 
+  m_GroupName: FX_Quest
+  m_GUID: 9a9c71d4f3ee7ba4daf4161395efe67f
+  m_SerializeEntries:
+  - m_GUID: 53450452d1a491c4c973488aa62746e2
+    m_Address: FX/Muzzle/MQ
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69e0906e7bc71a746a7a7c67a5c0ae55
+    m_Address: Target/MQ
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e85301c0397d6174cac48ec15d1c37c4
+    m_Address: FX/Explosion/MQ
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 84167c03143aeaf4c8a8aec1a972afe9, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8432e58ba6540f44dabf20f24c5f613d, type: 2}
+    - {fileID: 11400000, guid: 45a58bf6c8ea08248bbcdbe93199a00c, type: 2}

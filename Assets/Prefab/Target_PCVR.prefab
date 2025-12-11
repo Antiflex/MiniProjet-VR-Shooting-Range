@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4084599887809238553}
   - component: {fileID: 2149365410213029644}
   m_Layer: 0
-  m_Name: Cible
+  m_Name: Target_PCVR
   m_TagString: Undefined
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
