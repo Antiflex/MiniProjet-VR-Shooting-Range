@@ -1,40 +1,51 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using static UnityEngine.ParticleSystem;
 
 public class FireBulletAction : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject bullet;
-    [SerializeField]
-    public Transform spawnPoint;
-    [SerializeField]
-    public float fireSpeed = 20;
-    public GameObject particule;
+    [Header("Bullet Settings")]
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float fireSpeed = 20f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabbable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        var grabbable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
         grabbable.activated.AddListener(FireBullet);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // ---------------------------------------------------------
+    //  Tir + utilisation de la pool BulletPool
+    //  Les FX viennent de FXAddressables.Instance
+    // ---------------------------------------------------------
     public void FireBullet(ActivateEventArgs arg)
     {
-        GameObject spawnedBullet = Instantiate(bullet);
-        spawnedBullet.transform.position = spawnPoint.position;
-        spawnedBullet.GetComponent<Rigidbody>().linearVelocity = spawnPoint.forward * fireSpeed;
-        Destroy(spawnedBullet, 5);
-        GameObject explosion = Instantiate(particule);
-        explosion.transform.position = spawnPoint.transform.position;
-        Destroy(explosion, 0.5f);
+        // --- Récupération d'une balle depuis la pool ---
+        GameObject bullet = BulletPool.Instance.GetBullet();
+        bullet.transform.position = spawnPoint.position;
+
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        rb.linearVelocity = spawnPoint.forward * fireSpeed;
+
+        StartCoroutine(ReturnAfterDelay(bullet, 5f));
+
+        // --- FX Muzzle (chargé depuis FXAddressables) ---
+        GameObject muzzlePrefab = FXAddressables.Instance.muzzleFX;
+
+        if (muzzlePrefab != null)
+        {
+            GameObject fx = Instantiate(muzzlePrefab, spawnPoint.position, spawnPoint.rotation);
+            Destroy(fx, 0.5f);
+        }
+        else
+        {
+            Debug.LogWarning("⚠ Muzzle FX pas encore chargé ou introuvable !");
+        }
+    }
+
+    private IEnumerator ReturnAfterDelay(GameObject bullet, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        BulletPool.Instance.ReturnBullet(bullet);
     }
 }

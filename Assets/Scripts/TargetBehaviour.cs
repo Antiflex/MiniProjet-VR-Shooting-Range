@@ -1,29 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TargetBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject particule;
-    void Start()
+    private GameObject explosionPrefab;
+
+    private void Start()
     {
+        explosionPrefab = FXAddressables.Instance.explosionFX;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.gameObject.CompareTag("Bullet"))
-        {
-            GameObject explosion= Instantiate(particule);
-            explosion.transform.position = transform.position;
-            Destroy(explosion,0.75f);
-            Destroy(gameObject);
-            Destroy(other.gameObject);            
-        }
+        if (!other.CompareTag("Bullet")) return;
+
+        GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(fx, 0.75f);
+
+        gameObject.SetActive(false);
+        other.gameObject.SetActive(false);
     }
 }
