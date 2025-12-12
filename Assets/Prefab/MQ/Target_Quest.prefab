@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9043936503998725446}
   - component: {fileID: 6452298887204429133}
   - component: {fileID: 2143238136052429638}
-  - component: {fileID: 4084599887809238553}
   - component: {fileID: 2149365410213029644}
+  - component: {fileID: 11800860170569962}
   m_Layer: 0
   m_Name: Target_Quest
   m_TagString: Undefined
@@ -88,8 +88,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4084599887809238553
-CapsuleCollider:
+--- !u!114 &2149365410213029644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779922252330310774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc08355271cea1e44847489c6a6e73d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &11800860170569962
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,22 +118,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &2149365410213029644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779922252330310774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc08355271cea1e44847489c6a6e73d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particulePC: {fileID: 2797852879850996111, guid: 05c9e4ce780570f40b6edb54b6e53fea, type: 3}
-  particuleMQ: {fileID: 2797852879850996111, guid: e85301c0397d6174cac48ec15d1c37c4, type: 3}
+  serializedVersion: 3
+  m_Radius: 0.51
+  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940699}
