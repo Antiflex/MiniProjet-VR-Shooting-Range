@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: bcd55e6020dbaed4385b401c14199c2e
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 2692c535a0849cb8325e9a031a9a514b
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -24,11 +24,11 @@ MonoBehaviour:
   m_InternalBundleIdMode: 1
   m_AssetLoadMode: 0
   m_BundledAssetProviderType:
-    m_AssemblyName: 
-    m_ClassName: 
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider
   m_AssetBundleProviderType:
-    m_AssemblyName: 
-    m_ClassName: 
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_EnableJsonCatalog: 0
@@ -76,13 +76,41 @@ MonoBehaviour:
       - m_Id: b72cef62c442c6d42b136814a2b2aaed
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: bb4fdaab5d89ffb4f981f48728441176
-        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+        m_Value: 'Local/Quest/[BuildTarget]'
       - m_Id: c5c75eab5eec39f439193d07870838b5
         m_Value: 'ServerData/[BuildTarget]'
       - m_Id: cd41af758916ebe42bc3e7614c4a2e08
         m_Value: <undefined>
       - m_Id: fa9bc0ec1b9f04f459cb116dfac3c8f9
-        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+        m_Value: 'Local/Quest/[BuildTarget]'
+    - m_InheritedParent: 
+      m_Id: 654289e27d888b4459239766b504e26e
+      m_ProfileName: Profile MQ
+      m_Values:
+      - m_Id: b72cef62c442c6d42b136814a2b2aaed
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: bb4fdaab5d89ffb4f981f48728441176
+        m_Value: 'Local/Quest/[BuildTarget]'
+      - m_Id: c5c75eab5eec39f439193d07870838b5
+        m_Value: 'ServerData/[BuildTarget]'
+      - m_Id: cd41af758916ebe42bc3e7614c4a2e08
+        m_Value: <undefined>
+      - m_Id: fa9bc0ec1b9f04f459cb116dfac3c8f9
+        m_Value: 'Local/Quest/[BuildTarget]'
+    - m_InheritedParent: 
+      m_Id: f7fb1dd4cb0df534080fb0229a9e926c
+      m_ProfileName: Profile PC
+      m_Values:
+      - m_Id: b72cef62c442c6d42b136814a2b2aaed
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: bb4fdaab5d89ffb4f981f48728441176
+        m_Value: 'Local/PCVR/[BuildTarget]'
+      - m_Id: c5c75eab5eec39f439193d07870838b5
+        m_Value: 'ServerData/[BuildTarget]'
+      - m_Id: cd41af758916ebe42bc3e7614c4a2e08
+        m_Value: <undefined>
+      - m_Id: fa9bc0ec1b9f04f459cb116dfac3c8f9
+        m_Value: 'Local/PCVR/[BuildTarget]'
     m_ProfileEntryNames:
     - m_Id: b72cef62c442c6d42b136814a2b2aaed
       m_Name: BuildTarget
@@ -115,4 +143,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc8fbd81d6d25504eaa02f2b6bd11d6c, type: 2}
   - {fileID: 11400000, guid: a4079f741047e6e4db7947823bc9879c, type: 2}
   - {fileID: 11400000, guid: cd3d2a6ed872558488f027b51f84eb61, type: 2}
-  m_ActiveProfileId: 9c3a365bc760dac4580b629a10f8c1ae
+  m_ActiveProfileId: f7fb1dd4cb0df534080fb0229a9e926c
