@@ -21,7 +21,7 @@ public class FireBulletAction : MonoBehaviour
     public void FireBullet(ActivateEventArgs arg)
     {
         // --- Récupération d'une balle depuis la pool ---
-        GameObject bullet = BulletPool.Instance.GetBullet();
+        GameObject bullet = ProjectileManager.Instance.GetBullet();
         bullet.transform.position = spawnPoint.position;
 
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -46,6 +46,6 @@ public class FireBulletAction : MonoBehaviour
     private IEnumerator ReturnAfterDelay(GameObject bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
-        BulletPool.Instance.ReturnBullet(bullet);
+        ProjectileManager.Instance.ReturnBullet(bullet);
     }
 }
