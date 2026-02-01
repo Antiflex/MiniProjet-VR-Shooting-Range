@@ -10,11 +10,7 @@ public class WeaponEquip : MonoBehaviour
 
     public void AttachWeapon()
     {
-        weaponModel.SetParent(weaponSocket);
         Debug.Log("attaching weapon");
-        weaponModel.localPosition = Vector3.zero;
-        weaponModel.localRotation = Quaternion.identity;
-        weaponModel.GetComponent<XRGrabInteractable>().attachTransform = weaponSocket;
         weaponModel.gameObject.GetComponent<Collider>().enabled = false;
         weaponModel.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Animator>().SetTrigger("Equip");
@@ -29,7 +25,6 @@ public class WeaponEquip : MonoBehaviour
     }
     public void DetachWeapon()
     {
-        weaponModel.SetParent(null);
         weaponModel.gameObject.GetComponent<Collider>().enabled = true;
         weaponModel.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Animator>().SetBool("IsEquipped", false);
