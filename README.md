@@ -45,7 +45,7 @@ Pour faciliter l'évaluation et la compréhension de l'évolution du code, le d�
 
 ## 🛠️ Stack Technique
 
-* **Moteur :** Unity 2022.3.x (URP)
+* **Moteur :** Unity 6.0 (URP)
 * **XR :** XR Interaction Toolkit, OpenXR
 * **Graphics :** Shader Graph, Custom Render Features, HLSL
 * **Systèmes :** Unity Addressables, Animation Rigging (IK)
